@@ -1,0 +1,54 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.36
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json DropBox@1.0.0 No description
+6 warn package.json DropBox@1.0.0 No repository field.
+7 warn package.json DropBox@1.0.0 No README data
+8 verbose readDependencies using package.json deps
+9 verbose install where, deps [ 'C:\\wamp\\www\\Filebank_Final',
+9 verbose install   [ 'express', 'mysql', 'bower', 'http-server', 'angular-route' ] ]
+10 info preinstall DropBox@1.0.0
+11 verbose readDependencies using package.json deps
+12 verbose already installed skipping express@^4.10.9 C:\wamp\www\Filebank_Final
+13 verbose already installed skipping mysql@^2.5.4 C:\wamp\www\Filebank_Final
+14 verbose already installed skipping bower@^1.3.1 C:\wamp\www\Filebank_Final
+15 verbose already installed skipping http-server@^0.6.1 C:\wamp\www\Filebank_Final
+16 verbose already installed skipping angular-route@~1.3.0 C:\wamp\www\Filebank_Final
+17 silly resolved []
+18 info build C:\wamp\www\Filebank_Final
+19 verbose linkStuff [ false, false, false, 'C:\\wamp\\www' ]
+20 info linkStuff DropBox@1.0.0
+21 verbose linkBins DropBox@1.0.0
+22 verbose linkMans DropBox@1.0.0
+23 verbose rebuildBundles DropBox@1.0.0
+24 verbose rebuildBundles [ '.bin',
+24 verbose rebuildBundles   'angular-route',
+24 verbose rebuildBundles   'bower',
+24 verbose rebuildBundles   'express',
+24 verbose rebuildBundles   'http-server',
+24 verbose rebuildBundles   'mysql' ]
+25 info install DropBox@1.0.0
+26 info postinstall DropBox@1.0.0
+27 verbose unsafe-perm in lifecycle true
+28 info DropBox@1.0.0 Failed to exec postinstall script
+29 error DropBox@1.0.0 postinstall: `bower install`
+29 error Exit status 1
+30 error Failed at the DropBox@1.0.0 postinstall script.
+30 error This is most likely a problem with the DropBox package,
+30 error not with npm itself.
+30 error Tell the author that this fails on your system:
+30 error     bower install
+30 error You can get their info via:
+30 error     npm owner ls DropBox
+30 error There is likely additional logging output above.
+31 error System Windows_NT 6.1.7601
+32 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+33 error cwd C:\wamp\www\Filebank_Final
+34 error node -v v0.10.36
+35 error npm -v 1.4.28
+36 error code ELIFECYCLE
+37 verbose exit [ 1, true ]

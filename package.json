@@ -1,0 +1,16 @@
+{
+	"name": "DropBox",
+	"version": "1.0.0",
+	"dependencies": {
+		"express": "^4.10.9",
+		"mysql": "^2.5.4",
+		"bower": "^1.3.1",
+		"http-server": "^0.6.1",
+		"angular-route": "~1.3.0"
+	},
+	"scripts": {
+		"postinstall": "bower install",
+		"prestart": "npm install",
+		"start": "http-server -a 0.0.0.0 -p 8000"
+	}
+}
