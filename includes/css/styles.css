@@ -1,0 +1,240 @@
+.ng-dirty.ng-invalid {
+	border-color: red;
+}
+
+.ng-dirty.ng-valid {
+	border-color: green;
+}
+
+#features {
+	text-align: center;
+}
+
+#features img {
+	margin: 0 0 20px;
+}
+
+#inputInfo {
+	margin-bottom: 15px;
+}
+footer{
+	background: #252525;
+	color: #eee;
+	font-size: 11px;
+	padding:20px;
+}
+#inputLabel
+{
+	color: #1f2935;
+}
+body
+{
+	background-color:#1e2834;
+}
+#textfields
+{
+	/*border-top-left-radius: 8px; 
+	border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px; 
+	border-bottom-right-radius: 8px;*/
+	
+	margin-top:250px; /*top right bottom left*/
+	/*margin-right:150px;*/
+	
+	/*padding-top:15px;
+	padding-right:5px;
+	padding-left:5px;
+	padding-bottom:5px;
+	background-color: #2e3e4e;*/
+}
+#logo
+{
+	margin-top:100px; /*top right bottom left*/
+}
+#nameFileBank
+{
+	margin-top:155px;
+}
+#path
+{
+	color:#FFF;
+}
+#activity
+{
+	color:#FFF;
+	font-size:14px;
+	font-family: "Century Gothic";
+	padding-right:10px;
+}
+#activityMargin a:hover
+{
+	color:#1e8ce5;
+	text-decoration:none;
+	font-weight:bold;
+	font-size:14.5px;
+}
+#activityMargin
+{
+	margin-top:10px;
+}
+
+hr { 
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+#divider
+{
+	margin-top:260px;
+}
+
+/* --------------------------------------
+   Typography
+   -------------------------------------- */
+
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+}
+
+.well .page-header {
+	margin-top: 0;
+}
+
+.well .page-header h1 {
+	margin-top: 0;
+}
+
+ul.unstyled {
+	list-style: none;
+	padding: 0;
+}
+#description
+{
+	color:#c9d0d7;
+}
+#bottomDesc
+{
+	margin-top:20px;
+	margin-bottom:10px;
+}
+
+#sortingElements
+{
+	color: #666;
+	font-size:14px;
+	text-decoration:none;
+}
+#sorting a:hover
+{
+	color: #1e8ce5;
+}
+#tableElements
+{
+	padding-left:20px;
+}
+
+
+
+
+/* --------------------------------------
+   Navbar
+   -------------------------------------- */
+
+#searchInput {
+	width: 200px;
+}
+
+.navbar-brand {
+	padding: 13px 15px;
+}
+#navbarFront
+{
+	z-index:10;
+}
+#searchPanel
+{
+	margin-top:80px;
+	
+}
+
+ 
+/* --------------------------------------
+   Global Styles
+   -------------------------------------- */
+
+.alert {
+	margin-top: 20px;
+	display: none;
+}
+
+.well {
+	margin: 20px 0;
+}
+
+.tabbable img.thumbnail {
+	margin: 0 20px 10px 0;
+}
+
+.thumbnails {
+	margin: 20px 0;
+}
+
+.thumbnail {
+	position: relative;
+}
+
+.thumbnail h3 {
+	font-size: 16px;
+	margin: 0 0 10px;
+	line-height: 20px;
+}
+
+.thumbnail .price {
+	font-size: 22px;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	padding: 10px;
+}
+
+.thumbnail .price sup {
+	font-weight: normal;
+	font-size: 12px;
+}
+
+.thumbnail span.glyphicon {
+	margin-right: 5px;
+}
+
+
+/* --------------------------------------
+   Media Queries
+   -------------------------------------- */
+
+/* Portrait & landscape phone */
+@media (max-width: 480px) {
+	
+	.thumbnail .price sup {
+		font-size: 10px;
+	}
+	
+}
+
+/* --------------------------------------
+   Account Settings
+   -------------------------------------- */
+   
+#formAcct
+{
+	margin-top:70px;
+	background-color:#20709e;
+	padding-top:18px;
+}
+#acctLabel
+{
+	color:#FFF;
+}
+
+
