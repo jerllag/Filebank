@@ -85,6 +85,12 @@ app.controller('AccountCtrl', function($scope, $modal, $cookieStore, $location, 
 	$scope.New;
 	$scope.files = {};
 	$scope.info = $cookieStore;
+	$scope.deleted = 0;
+	
+	$scope.del = function() {
+		$scope.deleted = 1;
+		alert($scope.deleted);
+	};
 	
 	$scope.signOut = function() {
 		alert("Sign out");
@@ -127,20 +133,33 @@ app.controller('AccountCtrl', function($scope, $modal, $cookieStore, $location, 
 	$scope.save = function() {
 		if($scope.New.curPass == $cookieStore.get('password')) {
 			if($scope.New.newPass != null) {
-				if($scope.New.newPass == $scope.New.verPass) {
-					$http.put('js_php/fileServer.php', {usernum: $cookieStore.get('usernum'), name: $scope.New.name, pass: $scope.New.newPass})
-						.success(function(data) {
-							alert($scope.info.fileName);
-							$route.reload();
-						})
-						.error(function(data) {
-							alert(data);
-						});
+				if($scope.New.name != null) {
+					if($scope.New.newPass == $scope.New.verPass) {
+						$http.put('js_php/server.php', {usernum: $cookieStore.get('usernum'), name: $scope.New.name, pass: $scope.New.newPass})
+							.success(function(data) {
+								alert("1st");
+								$route.reload();
+							})
+							.error(function(data) {
+								alert(data);
+							});
+					}
+				} else {
+					if($scope.New.newPass == $scope.New.verPass) {
+						$http.put('js_php/server.php', {usernum: $cookieStore.get('usernum'), name: $cookieStore.get('name'), pass: $scope.New.newPass})
+							.success(function(data) {
+								alert("1st");
+								$route.reload();
+							})
+							.error(function(data) {
+								alert(data);
+							});
+					}
 				}
 			} else {
-				$http.put('js_php/fileServer.php', {usernum: $cookieStore.get('usernum'), name: $scope.New.name, pass: $cookieStore.get('password')})
+				$http.put('js_php/server.php', {usernum: $cookieStore.get('usernum'), name: $scope.New.name, pass: $cookieStore.get('password')})
 						.success(function(data) {
-							alert($scope.info.fileName);
+							alert(data);
 							$route.reload();
 						})
 						.error(function(data) {
@@ -218,11 +237,37 @@ app.controller('NewFileCtrl', function ($scope, $modalInstance, $http, $cookieSt
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
+	$route.reload();
   };
 });
 
-app.controller('FileCtrl', function($scope, $http, $cookieStore, $route) {
+app.controller('FileCtrl', function($scope, $http, $cookieStore, $route, $location) {
 	$scope.files = {};
+	$scope.search = {};
+	$scope.divide = {};
+	
+	$scope.search = function() {
+		$http({
+		method: 'GET',
+		url: 'js_php/fileSearch.php',
+		params: {usernum: $cookieStore.get('usernum'), location: $cookieStore.get('location'), filename: $scope.search.filename}
+		})
+		.success(function(data) {
+			//alert("Log In Success!");
+			//UserInfo.setInfo(data[0][0], data[0][1], data[0][2], data[0][3]);
+			//window.location = "http://192.168.1.131/FileBank_Final/js_php/server.php?email="+$scope.loginData.username+"&pass="+$scope.loginData.password;
+			//window.location = "#/home";
+			$scope.files = data;
+			//$route.reload();
+			//$location.path("/home/search");
+		})
+		.error(function(data) {
+			if(data == "") {
+				alert("File not found");
+			}
+		})
+	;
+	}
 
 	$http({
 		method: 'GET',
@@ -235,6 +280,78 @@ app.controller('FileCtrl', function($scope, $http, $cookieStore, $route) {
 			//window.location = "http://192.168.1.131/FileBank_Final/js_php/server.php?email="+$scope.loginData.username+"&pass="+$scope.loginData.password;
 			//window.location = "#/home";
 			$scope.files =  data;
+		})
+		.error(function(data) {
+			//alert(data);
+		})
+	;
+	
+	$http({
+		method: 'GET',
+		url: 'js_php/fileDivide.php',
+		params: {usernum: $cookieStore.get('usernum'), type: "image"}
+		})
+		.success(function(data) {
+			//alert("Log In Success!");
+			//UserInfo.setInfo(data[0][0], data[0][1], data[0][2], data[0][3]);
+			//window.location = "http://192.168.1.131/FileBank_Final/js_php/server.php?email="+$scope.loginData.username+"&pass="+$scope.loginData.password;
+			//window.location = "#/home";
+			//$scope.files =  data;
+			$scope.divide.image = data[0][0];
+		})
+		.error(function(data) {
+			//alert(data);
+		})
+	;
+	
+	$http({
+		method: 'GET',
+		url: 'js_php/fileDivide.php',
+		params: {usernum: $cookieStore.get('usernum'), type: "application"}
+		})
+		.success(function(data) {
+			//alert("Log In Success!");
+			//UserInfo.setInfo(data[0][0], data[0][1], data[0][2], data[0][3]);
+			//window.location = "http://192.168.1.131/FileBank_Final/js_php/server.php?email="+$scope.loginData.username+"&pass="+$scope.loginData.password;
+			//window.location = "#/home";
+			//$scope.files =  data;
+			$scope.divide.app = data[0][0];
+		})
+		.error(function(data) {
+			//alert(data);
+		})
+	;
+	
+	$http({
+		method: 'GET',
+		url: 'js_php/fileDivide.php',
+		params: {usernum: $cookieStore.get('usernum'), type: "video"}
+		})
+		.success(function(data) {
+			//alert("Log In Success!");
+			//UserInfo.setInfo(data[0][0], data[0][1], data[0][2], data[0][3]);
+			//window.location = "http://192.168.1.131/FileBank_Final/js_php/server.php?email="+$scope.loginData.username+"&pass="+$scope.loginData.password;
+			//window.location = "#/home";
+			//$scope.files =  data;
+			$scope.divide.vid = data[0][0];
+		})
+		.error(function(data) {
+			//alert(data);
+		})
+	;
+	
+	$http({
+		method: 'GET',
+		url: 'js_php/fileDivide.php',
+		params: {usernum: $cookieStore.get('usernum')}
+		})
+		.success(function(data) {
+			//alert("Log In Success!");
+			//UserInfo.setInfo(data[0][0], data[0][1], data[0][2], data[0][3]);
+			//window.location = "http://192.168.1.131/FileBank_Final/js_php/server.php?email="+$scope.loginData.username+"&pass="+$scope.loginData.password;
+			//window.location = "#/home";
+			//$scope.files =  data;
+			$scope.divide.others = data[0][0] - $scope.divide.image - $scope.divide.vid - $scope.divide.app;
 		})
 		.error(function(data) {
 			//alert(data);
@@ -261,26 +378,6 @@ app.controller('FileCtrl', function($scope, $http, $cookieStore, $route) {
 		$route.reload();
 	};
 });
-
-/*app.service('UserInfo', function() {
-	var user = {};
-	
-	return {
-		setInfo : function(usernum, name, email, password) {
-			user.usernum = usernum;
-			user.name = name;
-			user.email = email;
-			user.password = password;
-			user.hasUser = true;
-		},
-		getInfo : function() {
-			return user;
-		},
-		removeInfo : function() {
-			user = {};
-		}
-	};
-});*/
 	
 app.config(function($routeProvider) {
   $routeProvider

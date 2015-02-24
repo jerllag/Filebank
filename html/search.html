@@ -14,7 +14,7 @@
 				<div class="nav-collapse collapse navbar-responsive-collapse">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="#/home">Home</a>
+							<a href="#/home">Search</a>
 						</li>                            
 					</ul>
 					
@@ -41,7 +41,7 @@
 			</div><!-- end container -->
 	</div><!-- end navbar -->
 	
-		<div class="container" ng-controller="FileCtrl">
+		<div class="container">
 		<div class="row">
 			<form class="form-inline">
 				<div class="form-group" id="searchPanel">
@@ -51,18 +51,16 @@
 				</div>  
 						
 						<div class="col-lg-4" id="path">
-							<h4>Filebank/{{info.get('location')}}</h4>
+							<h4>Search</h4>
 						</div>  
 						
 						<div class="col-lg-4" id="activityMargin">
-							<a ng-click="newFile()" id="activity"><span class="glyphicon glyphicon-upload" ></span> Upload</a>
-							<a ng-click="newFolder()" id="activity"><span class="glyphicon glyphicon-folder-open"></span> New Folder</a>
 							<a ng-click="del()" id="activity"><span class="glyphicon glyphicon-trash"></span> Delete</a>
 						</div>  
 						
-						<div class="col-lg-3">
-							<form class="navbar-form pull-right" novalidate>
-								<input type="text" class="form-control" placeholder="File Bank" id="searchInput" ng-model="search.filename" required>
+						<div class="col-lg-3" ng-controller="FileCtrl">
+							<form class="navbar-form pull-right">
+								<input type="text" class="form-control" placeholder="File Bank" id="searchInput" ng-model="search.filename">
 								<button ng-click="search()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>                            
 							</form><!-- end navbar-form -->
 						</div>
@@ -75,7 +73,7 @@
 			
 				<!-- start of body -->
 				<div class="col-lg-10">
-					<div class="table">
+					<div class="table" ng-controller="FileCtrl">
 						<table class="table table-striped">
 							<tr id="sorting">
 								<th class="col-lg-1" ng-show="deleted==1"></th>
@@ -83,7 +81,7 @@
 								<th><a href="#" class="col-lg-2" id="sortingElements">Type</a></th>
 								<th><a href="#" class="col-lg-2" id="sortingElements">Modified</a></th>
 							</tr>
-							<td class="col-lg-1" ng-show="deleted==1&&!info.get('location')=='Home'">asd</td>
+							<td class="col-lg-1" ng-show="deleted==1&&!info.get('location')=='Home'"></td>
 							<td class="col-lg-5" id="tableElements" ng-hide="info.get('location')=='Home'"><a ng-click="backDir()">...</a></td>
 							<td class="col-lg-2" id="tableElements" ng-hide="info.get('location')=='Home'"></td>
 							<td class="col-lg-2" id="tableElements" ng-hide="info.get('location')=='Home'"></td>
@@ -137,16 +135,16 @@
 					
 					<div class="list-group pull-right">
 						<a href="#" class="list-group-item">
-							<span class="glyphicon glyphicon-file"></span> Documents <span class="badge">{{divide.app}}</span>
+							<span class="glyphicon glyphicon-file"></span> Documents <span class="badge">0</span>
 						</a>
 						<a href="#" class="list-group-item">
-							<span class="glyphicon glyphicon-picture"></span> Images <span class="badge">{{divide.image}}</span>
+							<span class="glyphicon glyphicon-picture"></span> Images <span class="badge">0</span>
 						</a>
 						<a href="#" class="list-group-item">
-							<span class="glyphicon glyphicon-film"></span> Videos <span class="badge">{{divide.vid}}</span>
+							<span class="glyphicon glyphicon-film"></span> Videos <span class="badge">0</span>
 						</a>
 						<a href="#" class="list-group-item">
-							<span class="glyphicon glyphicon-briefcase"></span> Others <span class="badge">{{divide.others}}</span>
+							<span class="glyphicon glyphicon-briefcase"></span> Others <span class="badge">0</span>
 						</a>
 					</div>
 					
